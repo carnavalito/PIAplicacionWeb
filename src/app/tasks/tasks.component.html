@@ -1,0 +1,43 @@
+<div class=" pt-5 pb-5 pbackground" style="min-height: 80vh;" >
+  <div class="container">
+  <div class="text-center">
+    <h1 style="font-size: 3rem;color:white;">LISTA DE Tareas</h1>
+  </div>
+  <div class="row">
+    <table class="table table-success table-striped-columns table-hover">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Asignado</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let task of tasks;index as i ">
+        <th scope="row">{{task.id}}</th>
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.user_id}}</td>
+        <td>
+          <!-- Button trigger modal -->
+          <a routerLink="/edit/{{task.id}}" class="btn btn-warning m-3 text-white">Editar</a>
+          <!-- Modal -->
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteTask(task.id)">Eliminar</button>
+        </td>
+
+      </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+  </div>
+
+</div>
+

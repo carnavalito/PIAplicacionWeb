@@ -1,0 +1,56 @@
+
+
+<div class=" pt-5 pb-5 pbackground" style="min-height: 80vh;">
+  <div class="container">
+    <div class="mb-3">
+      <a (click)="goBack()" class="btn btn-warning">Regresar</a>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card w-100" style="width: 18rem;">
+          <div class="card-body">
+            <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Videojuego</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  formControlName="nombre"
+                  value="{{videogame.nombre}}">
+              </div>
+              <div class="mb-3">
+                <label for="genero" class="form-label">Genero</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="genero"
+                  formControlName="genero"
+                  value="{{videogame.genero}}">
+              </div>
+              <div class="mb-3">
+                <label for="lanzamiento" class="form-label">Lanzamiento</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lanzamiento"
+                  formControlName="lanzamiento"
+                  value="{{videogame.lanzamiento}}">
+              </div>
+
+
+
+              <button type="submit"
+                      class="btn btn-success m-2"
+                      [disabled]="!editForm.dirty && editForm.valid"
+              >Editar
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

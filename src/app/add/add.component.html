@@ -1,0 +1,58 @@
+<div class=" pt-1 pb-5 pbackground " style="min-height: 80vh;">
+    <p style="font-size: 3rem;color: white;" class=" text-center mt-0 fw-bold">Agregar Tarea</p>
+  <div class="container align-items-center justify-content-center d-flex">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="title" class="form-label">Titulo</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              formControlName="title"
+            >
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Descripcion</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              formControlName="description"
+            >
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            id="user_id"
+            value="0"
+            formControlName="user_id"
+          >
+<!--          <div class="mb-3">-->
+<!--            <label for="lanzamiento" class="form-label">Asigna</label>-->
+<!--            <input-->
+<!--              type="text"-->
+<!--              class="form-control"-->
+<!--              id="lanzamiento"-->
+<!--              value="0"-->
+<!--              formControlName="lanzamiento"-->
+<!--            >-->
+<!--          </div>-->
+
+
+
+          <button type="submit"
+                  class="btn btn-success m-2"
+                  [disabled]=" !addForm.valid"
+          >Agregar Tarea
+          </button>
+        </form>
+      </div>
+
+    </div>
+    <div>
+
+    </div>
+  </div>
+</div>
