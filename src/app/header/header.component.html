@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: blueviolet;">
+<nav class="navbar navbar-expand-lg bg-body-tertiary ds-l" *ngIf="!dontShowHeader" style="background-color: #c7c7a6;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="../../assets/img/logo.png" style="width: 20%">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="../../assets/img/logot.png" style="width: 10%">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
         <li class="nav-item" >
           <a style="color: white; font-size: 20px;font-weight: bold;"
              class="nav-link "
-             routerLink="/"
+             routerLink="/home"
              [routerLinkActiveOptions]="{exact:true}"
           routerLinkActive="active">HOME</a>
         </li>
@@ -27,7 +27,12 @@
           <a style="color: white; font-size: 20px;font-weight: bold;"
              class="nav-link "
              routerLink="/add"
-             routerLinkActive="active">AGREGAR TAREA</a>
+             routerLinkActive="active">TAREA+</a>
+        </li>
+        <li class="nav-item" >
+          <a style="color: white; font-size: 20px;font-weight: bold;"
+             class="nav-link "
+             (click)="logout()" >Logout</a>
         </li>
 
       </ul>

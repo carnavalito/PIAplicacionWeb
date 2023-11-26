@@ -1,5 +1,3 @@
-
-
 <div class=" pt-5 pb-5 pbackground" style="min-height: 80vh;">
   <div class="container">
     <div class="mb-3">
@@ -11,38 +9,37 @@
           <div class="card-body">
             <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
               <div class="mb-3">
-                <label for="nombre" class="form-label">Videojuego</label>
+                <label for="title" class="form-label">Titulo</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="nombre"
-                  formControlName="nombre"
-                  value="{{videogame.nombre}}">
+                  id="title"
+                  formControlName="title"
+                  value="{{task.title}}">
               </div>
               <div class="mb-3">
-                <label for="genero" class="form-label">Genero</label>
+                <label for="description" class="form-label">Descripcion</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="genero"
-                  formControlName="genero"
-                  value="{{videogame.genero}}">
+                  id="description"
+                  formControlName="description"
+                  value="{{task.description}}">
               </div>
               <div class="mb-3">
-                <label for="lanzamiento" class="form-label">Lanzamiento</label>
+                <label for="userid" class="form-label">ID Usuario</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="lanzamiento"
-                  formControlName="lanzamiento"
-                  value="{{videogame.lanzamiento}}">
+                  id="userid"
+                  formControlName="user_id"
+                  value="{{task.user_id}}">
               </div>
-
 
 
               <button type="submit"
                       class="btn btn-success m-2"
-                      [disabled]="!editForm.dirty && editForm.valid"
+
               >Editar
               </button>
             </form>

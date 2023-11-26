@@ -23,18 +23,22 @@ export class TaskService {
   }
 
 
-  getVideogame(id: number) {
-    return this.http.get(`http://localhost:8080/videojuego/${id}`,);
+  getTask(body: any) {
+    return this.http.post('http://localhost:8080/api/get/task', body);
   }
 
-  editVideogame(editedVideogame, id: number) {
+  getUser(body: any) {
+    return this.http.post('http://localhost:8080/api/get/user', body);
+  }
+
+  editTask(body) {
     return this.http
-      .put(
-        `http://localhost:8080/actualizarVideojuego/${id}`,
-        editedVideogame
+      .post(
+        'http://localhost:8080/api/edit/task',
+        body
       ).subscribe(responseData => {
-      console.log(responseData);
-    });
+        console.log(responseData);
+      });
   }
 
   addTask(task) {
@@ -43,11 +47,10 @@ export class TaskService {
 
   }
 
-  deleteTask(body:any) {
-    return this.http.delete('http://localhost:8080/borrarVideojuego',body);
-
-
+  deleteTask(body: any) {
+    return this.http.delete('http://localhost:8080/api/task', body);
   }
+
 
 
 

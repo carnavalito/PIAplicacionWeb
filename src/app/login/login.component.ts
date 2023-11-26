@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private authService: AuthService, private router:Router) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
@@ -26,12 +26,17 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     console.log(this.loginForm.value);
     this.authService.login(this.loginForm.value).subscribe(responseData => {
-        console.log(responseData)
+        if (Object.keys(responseData).length <= 1) {
+          alert("Contraseña o usuario incorrecto")
+        } else {
+          localStorage.setItem('session', JSON.stringify(responseData));
+          this.router.navigateByUrl("/tasks");
+
+        }
+
+
       }
     );
-    //
-    this.router.navigateByUrl("/tasks");
-    alert('Bienvenido');
 
 
   }

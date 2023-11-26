@@ -13,8 +13,8 @@ import {HttpHeaders} from "@angular/common/http";
 export class EditComponent implements OnInit {
 
   id: number;
-  videogameId: number;
-  videogame;
+  taskId: number;
+  task;
   editForm: FormGroup;
 
   constructor(private taskService: TaskService, private route: ActivatedRoute, private location: Location) {
@@ -25,39 +25,39 @@ export class EditComponent implements OnInit {
       (params: Params) => {
 
         this.id = +params['id'];
-        this.taskService.getVideogame(this.id).subscribe(data => {
 
-          this.videogame = data[0];
-          this.videogameId = this.videogame.id;
-          // console.log(this.videogame);
-          this.initForm(this.videogame);
-
-
-        });
-
-        // this.taskService.fetchPosts().subscribe(data => {
-        //
-        //   this.movie = data['data'];
-        //   console.log(this.movie)
-        //   // this.movieId=this.movie.id;
-        //   // console.log(this.movieId);
-        //   // this.initForm(this.movie);
+        // this.taskService.getTask(options).subscribe(data => {
+        //   // this.task = data[0];
+        //   console.log("data");
+        //   // console.log(data);
+        //   // this.taskId = this.task.id;
+        //   // // console.log(this.videogame);
+        //   // this.initForm(this.task);
         //
         //
         // });
-
+        // this.taskService.fetchPosts().subscribe(data => {
+        //   console.log(data)
+        // })
 
       }
     )
+    const body = {id: this.id}
+    this.taskService.getTask(body).subscribe(data => {
+      this.task = data;
+      // this.taskId = this.task.id;
+      this.initForm(this.task);
+
+    })
 
 
   }
 
-  private initForm(videogame) {
+  private initForm(task) {
     this.editForm = new FormGroup({
-      'nombre': new FormControl(videogame.nombre, Validators.required),
-      'genero': new FormControl(videogame.genero, Validators.required),
-      'lanzamiento': new FormControl(videogame.lanzamiento, Validators.required)
+      'title': new FormControl(task.title, Validators.required),
+      'description': new FormControl(task.description, Validators.required),
+      'user_id': new FormControl(task.user_id, Validators.required)
 
     })
   }
@@ -65,10 +65,11 @@ export class EditComponent implements OnInit {
 
   onSubmit() {
     console.log(JSON.stringify(this.editForm.value));
-
-    this.taskService.editVideogame(this.editForm.value, this.videogame.id);
+    const body = {newValues: this.editForm.value, task: this.task};
+    // console.log(body)
+    this.taskService.editTask(body);
     this.location.back();
-    alert('Pelicula editada con exito');
+    alert('Tarea editada con exito');
   }
 
   goBack() {
